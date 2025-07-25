@@ -1,8 +1,9 @@
 package com.studentapp;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 public class Main2 {
     private static List<Student> studentList;
@@ -32,22 +33,36 @@ public class Main2 {
         studentList.add(s3);
         System.out.println(studentList);
 
-        Student result = findStudentById("S-1");
-        System.out.println("Результат поиска: " + result);
+
+        Student student = findStudentById("S-441");
+        System.out.println("Найден: " + student.getName());
+
+        sortByName();
+
+    }
+
+    private static void sortByName() {
+        Comparator<Student> studentNameComparator = new Comparator<Student>() {
+
+            @Override
+            public int compare(Student o1, Student o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        };
+
+        Collections.sort(studentList, studentNameComparator);
+        System.out.println(studentList);
     }
 
     public static Student findStudentById(String studentId) {
-
-        Student result = null;
-        try {
-            result = studentList
-                    .stream()
-                    .filter(x -> x.getStudentId().equalsIgnoreCase(studentId))
-                    .findFirst()
-                    .orElseThrow(() -> new NoSuchElementException("Данный идентификатор студента не найдено."));
-        } catch (NoSuchElementException e) {
-            System.err.println("Студент с ID " + studentId + " не найден.");
-        }
-        return result;
+        return studentList
+                .stream()
+                .filter(x -> x.getStudentId().equalsIgnoreCase(studentId))
+                .findFirst()
+                .orElseThrow(() -> {
+                    System.err.println("Студент с ID '" + studentId + "' не найден");
+                    return new RuntimeException("Студент с ID '" + studentId + "' не найден");
+                });
     }
 }
+
