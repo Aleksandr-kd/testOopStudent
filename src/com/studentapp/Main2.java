@@ -24,18 +24,18 @@ public class Main2 {
 
         Student s2 = new Student("Uday", 24, "S-888");
         s2.enrollCourse("Java");
-        Student s3 = new Student("Uday", 24, "S-888");
+        Student s3 = new Student("rday", 24, "S-788");
         s3.enrollCourse("Java");
 
 
         studentList.add(s1);
         studentList.add(s2);
         studentList.add(s3);
-        System.out.println(studentList);
+//        System.out.println(studentList);
 
 
-        Student student = findStudentById("S-441");
-        System.out.println("Найден: " + student.getName());
+//        Student student = findStudentById("S-441");
+//        System.out.println("Найден: " + student.getName());
 
         sortByName();
 
