@@ -32,14 +32,22 @@ public class Main2 {
         studentList.add(s3);
         System.out.println(studentList);
 
-        Student result = findStudentById("S-1777");
+        Student result = findStudentById("S-1");
         System.out.println("Результат поиска: " + result);
     }
 
     public static Student findStudentById(String studentId) {
-        return studentList.stream()
-                .filter(x -> x.getStudentId().equalsIgnoreCase(studentId))
-                .findFirst()
-                .orElseThrow(() -> new NoSuchElementException("Данных идентификатора студента не найдено."));
+
+        Student result = null;
+        try {
+            result = studentList
+                    .stream()
+                    .filter(x -> x.getStudentId().equalsIgnoreCase(studentId))
+                    .findFirst()
+                    .orElseThrow(() -> new NoSuchElementException("Данный идентификатор студента не найдено."));
+        } catch (NoSuchElementException e) {
+            System.err.println("Студент с ID " + studentId + " не найден.");
+        }
+        return result;
     }
 }
