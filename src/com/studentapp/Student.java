@@ -49,7 +49,7 @@ public class Student {
     }
 
     public void printStudentInfo() {
-        System.out.println("=============== Student Information =====================");
+        System.out.println("===================== Student Information =====================");
         System.out.println("Student name: " + name);
         System.out.println("Student age: " + age);
         System.out.println("Enrolled For: " + courses);

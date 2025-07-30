@@ -3,6 +3,7 @@ package com.studentapp;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main2 {
     private static List<Student> studentList;
@@ -12,37 +13,44 @@ public class Main2 {
         System.out.println("*********************** Welcome *************************");
         studentList = new ArrayList<Student>();
 
-        Student s1;
-        s1 = new Student("Alex ewe", 31, "S-1");
-        s1.enrollCourse("Java");
-        s1.enrollCourse("Python");
-        s1.enrollCourse("DSA");
-        System.out.println(s1);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите имя студента...");
+        String name = scanner.next();
+        System.out.println("Вы ввели имя: " + name);
+        System.out.println("Введите возраст студента...");
+        int age = scanner.nextInt();
+        System.out.println("Возрраст: " + age);
 
-        s1.printStudentInfo();
-
-        Student s2 = new Student("Uday", 24, "S-888");
-        s2.enrollCourse("Java");
-        Student s3 = new Student("rday", 24, "S-788");
-        s3.enrollCourse("Java");
-
-
-        studentList.add(s1);
-        studentList.add(s2);
-        studentList.add(s3);
-//        System.out.println(studentList);
-
-
-//        Student student = findStudentById("S-441");
-//        System.out.println("Найден: " + student.getName());
-
-        sortByName();
+//        Student s1;
+//        s1 = new Student("Alex ewe", 31, "S-1");
+//        s1.enrollCourse("Java");
+//        s1.enrollCourse("Python");
+//        s1.enrollCourse("DSA");
+//        System.out.println(s1);
+//
+//        s1.printStudentInfo();
+//
+//        Student s2 = new Student("Uday", 24, "S-888");
+//        s2.enrollCourse("Java");
+//        Student s3 = new Student("rday", 24, "S-788");
+//        s3.enrollCourse("Java");
+//
+//
+//        studentList.add(s1);
+//        studentList.add(s2);
+//        studentList.add(s3);
+////        System.out.println(studentList);
+//
+//
+////        Student student = findStudentById("S-441");
+////        System.out.println("Найден: " + student.getName());
+//
+//        sortByName();
 
     }
 
     private static void sortByName() {
         Comparator<Student> studentNameComparator = Comparator.comparing(Student::getName);
-
         studentList.sort(studentNameComparator);
         System.out.println(studentList);
     }
